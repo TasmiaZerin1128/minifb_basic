@@ -88,8 +88,13 @@ export class RegisterComponent implements OnInit {
         this.credError = "Name should be atleast of 4 characters";
         return false;
       }
-      if(this.password.length<6){
-        this.credError = "Password must contain atleast 6 characters";
+      if(this.name.length>25)
+      {
+        this.credError = "Name should be atmost of 25 characters";
+        return false;
+      }
+      if(this.password.length<6 || this.password.length>16){
+        this.credError = "Password must contain atleast 6 characters and atmost 16 characters";
         return false;
       }
       if(this.age<18){
