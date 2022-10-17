@@ -52,15 +52,15 @@ export class RegisterComponent implements OnInit {
         console.log(data.message);
         this.resError = JSON.stringify(data.message);
 
-        if(this.resError.includes("must be a valid email")){
-          this.canRegister = false;
-          this.hasError = true;
-          this.credError = this.resError;
-        }
-        else{
+        if (this.resError.includes("All good")){
           this.registerForm.reset();
           console.log('Registered');
           this.router.navigate(['']);
+        }
+        else if(this.resError.includes("must be a valid email") || this.resError.includes("Email already exists")){
+          this.canRegister = false;
+          this.hasError = true;
+          this.credError = this.resError;
         }
       },
       (err) => {

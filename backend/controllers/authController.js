@@ -33,7 +33,7 @@ exports.getRegistered = (async (req,res)=>{
     });
     try{
         const savedUser = await newuser.save();
-        res.send({user: newuser._id});
+        res.send({user: newuser._id, message: "All good"});
     } catch(err){
         res.status(400).send(err);
     }
