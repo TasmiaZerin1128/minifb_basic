@@ -17,8 +17,9 @@ const userSchema = new mongoose.Schema({
         min: 8
     },
     dob:{
-        type: Date,
-        required: true
+        type: String,
+        required: true,
+        min: 2
     }
 });
 

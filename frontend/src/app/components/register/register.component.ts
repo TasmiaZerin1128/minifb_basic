@@ -50,9 +50,9 @@ export class RegisterComponent implements OnInit {
     this.authService.signUp(this.registerForm.value).subscribe(
       (data) => {
         console.log(data.message);
-        this.resError = data.message;
+        this.resError = JSON.stringify(data.message);
 
-        if(this.resError.includes("already exists") || this.resError.includes("must be a valid email")){
+        if(this.resError.includes("must be a valid email")){
           this.canRegister = false;
           this.hasError = true;
           this.credError = this.resError;
@@ -75,8 +75,7 @@ export class RegisterComponent implements OnInit {
   check():boolean{
       this.hasError = true;
       // this.credError = "Please enter the credentials correctly";
-      var timeDiff = Math.abs(Date.now() - new Date(this.dob).getTime());
-      this.age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
+      this.age = Number(this.dob);
 
       console.log("Age " + this.age + "  password " + this.password.length);
       if(this.email=='' || this.password=='' || this.name=='' || this.dob==''){
